@@ -1,8 +1,7 @@
-# React + Vite
+# **ROOMZ**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A high-tech breathtaking robust platform for video-conferencing, meeting & virtual classroom.
 
-Currently, two official plugins are available:
+#
+![Logo](https://github.com/CrossOriGenes/roomz/blob/main/src/assets/logo_dark.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
