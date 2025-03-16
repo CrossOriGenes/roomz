@@ -1,0 +1,108 @@
+:root {
+  --blue: #0d6efd;
+  --indigo: #6610f2;
+  --purple: #6f42c1;
+  --purple-dark-1: #382659;
+  --purple-dark-2: #100624;
+  --purple-dark-3: #1c1f2e;
+  --pink: #ed499b;
+  --red: #dc3545;
+  --orange: #fd7e14;
+  --yellow: #ffc107;
+  --green: #198754;
+  --teal: #20c997;
+  --cyan: #0dcaf0;
+  --white: #fff;
+  --light-coral: #fbb3b3;
+  --gray-100: #f8f9fa;
+  --gray-200: #e9ecef;
+  --gray-300: #dee2e6;
+  --gray-400: #ced4da;
+  --gray-500: #adb5bd;
+  --gray-600: #6c757d;
+  --gray-700: #495057;
+  --gray-800: #343a40;
+  --gray-900: #212529;
+  --black: #000;
+  --primary: var(--blue);
+  --secondary: var(--gray-600);
+  --success: var(--green);
+  --info: var(--cyan);
+  --warning: var(--yellow);
+  --danger: var(--red);
+  --light: var(--gray-100);
+  --dark: var(--gray-900);
+}
+
+/* -- accordian -- */
+.key-features-accordian {
+  color: var(--gray-600);
+  border-radius: 7px;
+  border: 1px solid var(--gray-600);
+  overflow: hidden;
+}
+
+.accordion-header {
+  border-top: 0.2px solid var(--gray-600);
+  border-bottom: 0.2px solid var(--gray-600);
+}
+
+.accordion-button {
+  font-size: 1.1rem !important;
+  color: var(--gray-200) !important;
+  font-weight: 600 !important;
+  padding: 0.8rem 1rem;
+}
+
+.accordion-button[aria-expanded="true"] {
+  background: var(--purple-dark-1) !important;
+}
+
+.accordion-button::after {
+  position: absolute !important;
+  right: 15px !important;
+  transition: 0.3s ease;
+  background-image: none !important;
+  font-family: fontAwesome !important;
+  color: var(--gray-500);
+}
+
+.accordion-button.collapsed::after {
+  content: "\f0d7" !important;
+  transform: none !important;
+}
+
+.accordion-button:not(.collapsed)::after {
+  content: "\f0d8" !important;
+  transform: none !important;
+}
+
+.accordion-body {
+  padding: 0.8rem 1rem;
+}
+
+hr {
+  position: relative;
+  width: 100%;
+  height: 2px;
+}
+
+hr.seperator {
+  margin-left: -1rem !important;
+  background: var(--gray-700);
+}
+
+.heading span#dots {
+  color: var(--white) !important;
+  animation: blink 1.5s forwards infinite steps(1);
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
