@@ -618,28 +618,31 @@ footer .address-links li p {
   margin: 15px 0 30px;
 }
 
-#auth-container .social-container a {
-  border: 2px solid var(--gray-500);
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 10px;
-  height: 40px;
-  width: 40px;
-  transition: all 0.3s ease;
+#auth-container .social-container button {
+  border: 2px solid var(--gray-500) !important;
+  display: inline-flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin: 0 7px !important;
+  height: 40px !important;
+  width: 40px !important;
+  padding: 0 !important;
+  transition: all 0.3s ease !important;
+  border-radius: 0 !important;
+  background: none !important;
 }
 
-#auth-container .social-container a i {
-  font-size: 1.5rem;
-  color: var(--white);
+#auth-container .social-container button i {
+  font-size: 1.5rem !important;
+  color: var(--white) !important;
 }
 
-#auth-container .social-container a:hover {
-  background-color: var(--gray-500);
+#auth-container .social-container button:hover {
+  background-color: var(--gray-500) !important;
 }
 
-#auth-container .social-container a:hover i {
-  color: var(--black);
+#auth-container .social-container button:hover i {
+  color: var(--black) !important;
 }
 
 /* header */
