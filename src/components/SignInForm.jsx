@@ -12,7 +12,7 @@ const SignInForm = () => {
     window.addEventListener("message", (e) => {
       if (e.origin !== "http://localhost:5000") return;
       if (e.data) {
-        // console.log(e.data);
+        console.log(e.data);
         // set token to context api
         navigate("../home");
         // toast login message
@@ -22,6 +22,7 @@ const SignInForm = () => {
       }
     });
   }
+  
 
   return (
     <div className="form-container sign-in-container">
@@ -35,13 +36,14 @@ const SignInForm = () => {
             <i className="fab fa-github" />
           </button>
         </div>
-        <input type="email" placeholder="Email" name="mail" id="login-mail" />
+        <input type="email" placeholder="Email" name="mail" id="login-mail" required />
         {/* <p id="errLoginMail" /> */}
         <input
           type="password"
           placeholder="Password"
           name="pswrd"
           id="login-pswrd"
+          required
         />
         {/* <p id="errLoginPswrd" /> */}
         <a href="#" className="mt-4">

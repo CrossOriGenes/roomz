@@ -19,7 +19,7 @@ const Dashboard = () => {
       >
         <div className="column container py-4">
           <div className="time-card">
-            <video src="images/auth-bg.mp4" autoPlay muted loop />
+            <video src="images/time-card-bg.mp4" autoPlay muted loop />
             <div className="badge text-bg-dark text-warning">
               Upcoming meeting at <span>12:30 PM</span>
             </div>

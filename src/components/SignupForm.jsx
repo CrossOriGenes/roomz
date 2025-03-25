@@ -6,12 +6,12 @@ const SignupForm = () => {
       <form method="post" id="signup-form">
         <h1 className="heading">Create Account</h1>
         <div className="social-container">
-          <a href="#" className="social">
+          <button type="button" className="social">
             <i className="fab fa-google" />
-          </a>
-          <a href="#" className="social">
+          </button>
+          <button type="button" className="social">
             <i className="fab fa-github" />
-          </a>
+          </button>
         </div>
         <input type="text" placeholder="Name" name="username" id="reg-name" />
         {/* <p id="errRegsUName" /> */}
