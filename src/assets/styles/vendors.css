@@ -106,3 +106,45 @@ hr.seperator {
     opacity: 1;
   }
 }
+
+
+p#errRegsUName,
+p#errRegsEmail,
+p#errRegsPswrd {
+  color: var(--danger) !important;
+  font-weight: 500 !important;
+}
+
+
+/* * 
+ * toaster styles 
+* */
+.error-toast__styles {
+  background: #ffcccc !important;
+  color: var(--dark) !important;
+  font-weight: 600 !important;
+}
+
+.success-toast__styles {
+  background: #ccffdd !important;
+  color: var(--dark) !important;
+  font-weight: 600 !important;
+}
+
+
+/* *
+ * alert styles 
+* */
+.alert-danger {
+  width: 80% !important;
+  padding: 0.4rem 0.8rem !important;
+  color: #800000 !important;
+  background: #ff9393 !important;
+  border: none !important;
+  border-radius: 2px !important;
+}
+
+.alert-danger strong {
+  font-size: 0.9rem !important;
+  font-weight: 600 !important;
+}

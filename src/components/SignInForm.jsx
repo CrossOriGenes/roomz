@@ -1,14 +1,10 @@
-import React from "react";
+import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const SignInForm = () => {
   const navigate = useNavigate();
   function handleGoogleLogin() {
-    window.open(
-      "http://localhost:5000/api/auth/google/google-login",
-      "_blank"
-      //   "width=500,height=600"
-    );
+    window.open("http://localhost:5000/api/auth/google/google-login", "_blank");
     window.addEventListener("message", (e) => {
       if (e.origin !== "http://localhost:5000") return;
       if (e.data) {
@@ -22,11 +18,10 @@ const SignInForm = () => {
       }
     });
   }
-  
 
   return (
     <div className="form-container sign-in-container">
-      <form method="post" id="login-form">
+      <form id="login-form">
         <h1 className="heading">Sign in</h1>
         <div className="social-container">
           <button type="button" className="social" onClick={handleGoogleLogin}>
@@ -36,13 +31,17 @@ const SignInForm = () => {
             <i className="fab fa-github" />
           </button>
         </div>
-        <input type="email" placeholder="Email" name="mail" id="login-mail" required />
+        <input
+          type="email"
+          placeholder="Email"
+          name="mail"
+          required
+        />
         {/* <p id="errLoginMail" /> */}
         <input
           type="password"
           placeholder="Password"
           name="pswrd"
-          id="login-pswrd"
           required
         />
         {/* <p id="errLoginPswrd" /> */}

@@ -50,12 +50,12 @@ router.get(
       }
 
       const token = jwt.sign({ id: req.user.id }, process.env.JWT_SECRET, {
-        expiresIn: "120s",
+        expiresIn: "300s",
       })
       if (token) {
         res.cookie("token", token, {
           httpOnly: true,
-          maxAge: 2 * 60 * 1000,
+          maxAge: 5 * 60 * 1000,
         })
       }
       return res.send(`
@@ -76,6 +76,6 @@ router.get(
         })
     }
   }
-);
+)
 
-module.exports = router;
+module.exports = router
