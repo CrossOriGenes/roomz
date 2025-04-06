@@ -1,10 +1,10 @@
 import { createContext, useEffect, useState } from "react";
-import toast from "react-hot-toast";
+import { toast } from "react-toastify";
 
 export const AuthContext = createContext();
 
 const AuthContextProvider = (props) => {
-  const [token, setToken] = useState(null);
+  const [token, setToken] = useState(localStorage.getItem("token") || null);
   const [user, setUser] = useState({});
 
   async function checkToken() {
@@ -13,20 +13,27 @@ const AuthContextProvider = (props) => {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await response.json();
-      if (!data.valid) {
-        setToken(null);
-        setUser({});
-        localStorage.removeItem("token");
-      } else {
-        toast.success(`Hi <strong>${data.user.name}</strong>, Welcome!`);
+      if (data.sucess) {
+        const element = (
+          <div>
+            Hi&nbsp;<strong>{data.user.username}</strong>, Welcome!
+          </div>
+        );
+        toast.info(element);
+        console.log(`Welcome ${data.user.username}`);
         setUser(data.user);
-      }
-      console.log(data);
+      } 
+      if (!data.valid) {
+        setUser({});
+        setToken(null);
+      } 
+      // console.log(data);
     } catch (e) {}
   }
 
   useEffect(() => {
     checkToken();
+    // return () => 
   }, []);
 
   function login(token) {
@@ -37,6 +44,7 @@ const AuthContextProvider = (props) => {
 
   function logout() {
     setToken(null);
+    setUser({});
     localStorage.removeItem("token");
     console.log("User logged out");
   }

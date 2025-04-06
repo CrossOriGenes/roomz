@@ -29,11 +29,11 @@ const SignupForm = ({ onSubmit, isLoading, errors }) => {
             <i className="fab fa-github" />
           </button>
         </div>
-        {errors ? (
+        {errors && (
           <Alert alert_type="danger">
             <strong>{errors}</strong>
           </Alert>
-        ) : null}
+        )}
         <input
           type="text"
           placeholder="Name"

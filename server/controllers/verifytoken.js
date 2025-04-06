@@ -6,14 +6,14 @@ async function verifyToken(req, res, next){
     const bearerheader = req.headers["authorization"]
     if (typeof bearerheader === "undefined") {
         console.log("User not verified")
-        return res.status(403).json({msg: "Invalid user/token"})
+        return res.status(403).json({msg: "Invalid user/token!"})
     }
     else{
         const bearer = bearerheader.split(' ')
         const bearertoken = bearer[1]
         jwt.verify(bearertoken, process.env.JWT_SECRET, async (err, decoded) => {
             if (err) {
-                return res.status(403).json({ valid: false, message: "Token invalid!" })
+                return res.status(403).json({ valid: false, message: "Session Expired!" })
             }
             
             const user = await User.findById(decoded.id)

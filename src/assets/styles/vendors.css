@@ -1,4 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Sigmar&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+
 :root {
+  --sigma-fontFamily: "Sigmar", serif;
+  --raleway-fontFamily: "Raleway", serif;
+
   --blue: #0d6efd;
   --indigo: #6610f2;
   --purple: #6f42c1;
@@ -32,6 +38,61 @@
   --danger: var(--red);
   --light: var(--gray-100);
   --dark: var(--gray-900);
+
+  /* 
+  * toaster CSS
+  */
+  --toastify-color-light: #fff;
+  --toastify-color-dark: #121212;
+  --toastify-color-info: #3498db;
+  --toastify-color-success: #07bc0c;
+  --toastify-color-warning: #f1c40f;
+  --toastify-color-error: hsl(6, 78%, 57%);
+  --toastify-color-transparent: rgba(255, 255, 255, 0.7);
+  
+  --toastify-icon-color-info: var(--toastify-color-info);
+  --toastify-icon-color-success: var(--toastify-color-success);
+  --toastify-icon-color-warning: var(--toastify-color-warning);
+  --toastify-icon-color-error: var(--toastify-color-error);
+  
+  --toastify-container-width: fit-content;
+  --toastify-toast-width: 320px;
+  --toastify-toast-offset: 16px;
+  --toastify-toast-top: max(var(--toastify-toast-offset), env(safe-area-inset-top));
+  --toastify-toast-right: max(var(--toastify-toast-offset), env(safe-area-inset-right));
+  --toastify-toast-left: max(var(--toastify-toast-offset), env(safe-area-inset-left));
+  --toastify-toast-bottom: 6px;
+  --toastify-toast-bg: #fff;
+  --toastify-toast-bg-warning: #fffdcc;
+  --toastify-toast-bg-success: #ccffdd;
+  --toastify-toast-bg-error: #ffcccc;
+  --toastify-toast-bg-info: #cce0ff;
+  --toastify-toast-padding: 0.5rem 1rem;
+  --toastify-toast-min-height: 54px;
+  --toastify-toast-max-height: 800px;
+  --toastify-toast-bd-radius: 8px;
+  --toastify-toast-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  --toastify-font-family: var(--raleway-fontFamily);
+  --toastify-z-index: 9999;
+  --toastify-text-color-light: #222;
+  --toastify-text-color-dark: var(--gray-500);
+
+  /* Used only for colored theme */
+  --toastify-text-color-info: #fff;
+  --toastify-text-color-success: #fff;
+  --toastify-text-color-warning: #fff;
+  --toastify-text-color-error: #fff;
+
+  --toastify-spinner-color: #616161;
+  --toastify-spinner-color-empty-area: #e0e0e0;
+  --toastify-color-progress-light: linear-gradient(to right, #4cd964, #5ac8fa, #007aff, #34aadc, #5856d6, #ff2d55);
+  --toastify-color-progress-dark: #bb86fc;
+  --toastify-color-progress-info: var(--toastify-color-info);
+  --toastify-color-progress-success: var(--toastify-color-success);
+  --toastify-color-progress-warning: var(--toastify-color-warning);
+  --toastify-color-progress-error: var(--toastify-color-error);
+  /* used to control the opacity of the progress trail */
+  --toastify-color-progress-bgo: 0.2;
 }
 
 /* -- accordian -- */
@@ -119,16 +180,36 @@ p#errRegsPswrd {
 /* * 
  * toaster styles 
 * */
-.error-toast__styles {
-  background: #ffcccc !important;
-  color: var(--dark) !important;
+.Toastify__toast {
+  padding: var(--toastify-toast-padding) !important;
+  min-height: var(--toastify-toast-min-height) !important;
+  font-family: var(--toastify-font-family) !important;
   font-weight: 600 !important;
+  font-size: 0.9rem !important;
 }
 
-.success-toast__styles {
-  background: #ccffdd !important;
-  color: var(--dark) !important;
-  font-weight: 600 !important;
+.Toastify__toast--light {
+  color: var(--toastify-text-color-light) !important;
+}
+
+.Toastify__toast--dark {
+  color: var(--toastify-text-color-dark) !important;
+}
+
+.Toastify__toast--warning {
+  background: var(--toastify-toast-bg-warning) !important;
+}
+
+.Toastify__toast--error {
+  background: var(--toastify-toast-bg-error) !important;
+}
+
+.Toastify__toast--success {
+  background: var(--toastify-toast-bg-success) !important;
+}
+
+.Toastify__toast--info {
+  background: var(--toastify-toast-bg-info) !important;
 }
 
 
@@ -145,6 +226,6 @@ p#errRegsPswrd {
 }
 
 .alert-danger strong {
-  font-size: 0.9rem !important;
+  font-size: 0.8rem !important;
   font-weight: 600 !important;
 }

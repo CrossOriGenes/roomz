@@ -1,12 +1,18 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 import SignupForm from "../components/SignupForm";
 import SignInForm from "../components/SignInForm";
-import toast from "react-hot-toast";
 
 const Auth = () => {
+  const authCtx = useContext(AuthContext);
+  const navigate = useNavigate();
   const [toggle, setToggle] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [loading2, setLoading2] = useState(false);
   const [errors, setErrors] = useState();
+  const [errors2, setErrors2] = useState();
 
   async function handleSignupForm(userData) {
     try {
@@ -31,6 +37,30 @@ const Auth = () => {
     } catch (e) {}
   }
 
+  async function handleSigninForm(loginData) {
+    try {
+      setLoading2(true);
+      const response = await fetch("http://localhost:5000/api/auth/login", {
+        method: "POST",
+        body: JSON.stringify(loginData),
+        headers: {
+          "Content-type": "application/json",
+        },
+      });
+      const data = await response.json();
+      setLoading2(false);
+      if (data.success) {
+        authCtx.login(data.token);
+        navigate("../home");
+        toast.success(data.message);
+        setErrors2(null);
+      } else {
+        console.log(data.errors[0]);
+        setErrors2(data.errors[0]);
+      }
+    } catch (e) {}
+  }
+
   return (
     <>
       <div className="banner2">
@@ -48,7 +78,11 @@ const Auth = () => {
             />
 
             {/* sign-in section */}
-            <SignInForm />
+            <SignInForm
+              onSubmit={handleSigninForm}
+              isLoading={loading2}
+              signInErrors={errors2}
+            />
 
             {/*   image overlay section    */}
             <div className="overlay-container">

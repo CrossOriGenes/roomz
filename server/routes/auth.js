@@ -39,7 +39,7 @@ router.post("/signup", async (req, res) => {
         .catch((err) => {
           return res.status(401).json({
             success: false,
-            errors: ["Invalid / mismatched password!"],
+            errors: ["ERROR in generating password!"],
           });
         });
     }
@@ -70,22 +70,23 @@ router.post("/login", async (req, res) => {
           });
         }
 
-        const token = jwt.sign(
-          { id: logged_user._id },
-          process.env.JWT_SECRET,
-          { expiresIn: "300s" }
-        );
+        const payload = { id: logged_user._id };
+        const token = jwt.sign(payload, process.env.JWT_SECRET, {
+          expiresIn: "10h",
+        });
         if (token) {
           res.cookie("token", token, {
             httpOnly: true,
-            maxAge: 5 * 60 * 1000,
+            maxAge: 10 * 60 * 60 * 1000,
           });
         }
-        return res.status(200).json({
-          success: true,
-          token,
-          message: "Login Successful",
-        });
+        setTimeout(() => {
+          return res.status(200).json({
+            success: true,
+            token,
+            message: "Login Successful",
+          });
+        }, 2000);
       });
     }
   } catch (error) {
@@ -98,18 +99,32 @@ router.post("/login", async (req, res) => {
 
 // verify-token expiration
 router.get("/verifytoken", verifyToken, async (req, res) => {
+  const {_id, user_name: username, email, timestamp, profile_pic} = req.user
   return res.status(200).json({
     valid: true,
-    message: "Token valid",
-    user: req.user,
+    message: "User Authenticated.",
+    user: {
+      _id,
+      username,
+      email,
+      timestamp,
+      profile_pic
+    },
   });
 });
 
 // get user profile
 router.get("/profile", verifyToken, (req, res) => {
+  const {_id, user_name: username, email, timestamp, profile_pic} = req.user
   return res.status(200).json({
     sucess: true,
-    user: req.user,
+    user: {
+      _id,
+      username,
+      email,
+      timestamp,
+      profile_pic
+    },
   });
 });
 

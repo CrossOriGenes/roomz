@@ -34,12 +34,14 @@ router.get(
   passport.authenticate("google", { session: false }),
   async (req, res) => {
     try {
-      // console.log(req.user._json)
+      // console.log(req.user)
+      let id
       const existinguser = await User.findOne({ email: req.user._json.email })
       if (existinguser) {
         existinguser.profile_pic = req.user._json.picture
-        existinguser.timestamp = Date.now
+        existinguser.timestamp = Date.now()
         await existinguser.save()
+        id = existinguser._id
       } else {
         const newUser = new User({
           user_name: req.user._json.name,
@@ -47,9 +49,11 @@ router.get(
           profile_pic: req.user._json.picture,
         })
         await newUser.save()
+        id = newUser._id
       }
 
-      const token = jwt.sign({ id: req.user.id }, process.env.JWT_SECRET, {
+      const payload = { id: id.toHexString()}
+      const token = jwt.sign(payload, process.env.JWT_SECRET, {
         expiresIn: "300s",
       })
       if (token) {
@@ -58,18 +62,20 @@ router.get(
           maxAge: 5 * 60 * 1000,
         })
       }
+      
       return res.send(`
             <script>
                 window.opener.postMessage({ 
-                    success: true,
-                    token: "${token}",
-                    message: "Login successful" 
+                  success: true,
+                  token: "${token}",
+                  message: "Login successful" 
                 }, "${process.env.CLIENT_URL}");
                 window.close();
             </script>
         `)
     } 
     catch (e) {
+        console.log(e)
         return res.status(500).json({
             success: false,
             message: "Something went wrong!" 

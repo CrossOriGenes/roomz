@@ -1,10 +1,17 @@
-import React from "react";
+import { useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import appLogo from "../assets/logo.svg";
+import { AuthContext } from "../context/AuthContext";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
+  const authCtx = useContext(AuthContext);
   const navigate = useNavigate();
-  // function logoutHandler() {}
+  function logoutHandler() {
+    authCtx.logout();
+    navigate("../auth");
+    toast.success("Logged-out successfully.");
+  }
 
   return (
     <aside className="aside-panel">
@@ -58,7 +65,7 @@ const Navbar = () => {
             </NavLink>
           </li>
           <li>
-            <button onClick={() => navigate("../auth")}>
+            <button onClick={logoutHandler}>
               <i className="fa-solid fa-right-from-bracket" />
               <span>Logout</span>
             </button>
