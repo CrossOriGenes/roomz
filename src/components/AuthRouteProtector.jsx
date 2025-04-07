@@ -20,9 +20,10 @@ const AuthRouteProtector = ({ children }) => {
         toast.warning(data.message);
         authCtx.logout();
         return navigate("../auth");
+      }else{
+        authCtx.setUser(data.user);
       }
       // console.log(data);
-      // console.log(JSON.parse(authCtx.user));
     } catch (e) {}
   }
 

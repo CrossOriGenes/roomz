@@ -54,12 +54,12 @@ router.get(
 
       const payload = { id: id.toHexString()}
       const token = jwt.sign(payload, process.env.JWT_SECRET, {
-        expiresIn: "300s",
+        expiresIn: "10h",
       })
       if (token) {
         res.cookie("token", token, {
           httpOnly: true,
-          maxAge: 5 * 60 * 1000,
+          maxAge: 10 * 60 * 60 * 1000,
         })
       }
       

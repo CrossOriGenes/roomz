@@ -673,7 +673,6 @@ footer .address-links li p {
   position: relative;
   width: 2.5rem;
   height: 2.5rem;
-  background-color: var(--cyan);
   border: 2px solid var(--gray-600);
   border-radius: 50%;
   overflow: hidden;

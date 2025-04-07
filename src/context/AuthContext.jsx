@@ -5,35 +5,35 @@ export const AuthContext = createContext();
 
 const AuthContextProvider = (props) => {
   const [token, setToken] = useState(localStorage.getItem("token") || null);
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(null);
 
-  async function checkToken() {
+  async function checkToken(controller) {
     try {
       const response = await fetch("http://localhost:5000/api/auth/profile", {
         headers: { Authorization: `Bearer ${token}` },
+        signal: controller.signal,
       });
       const data = await response.json();
-      if (data.sucess) {
+      if (data.success || data.valid) {
+        setUser(data.user);
         const element = (
-          <div>
+          <p className="mb-0">
             Hi&nbsp;<strong>{data.user.username}</strong>, Welcome!
-          </div>
+          </p>
         );
         toast.info(element);
-        console.log(`Welcome ${data.user.username}`);
-        setUser(data.user);
-      } 
-      if (!data.valid) {
-        setUser({});
-        setToken(null);
-      } 
+      }
       // console.log(data);
     } catch (e) {}
   }
 
   useEffect(() => {
-    checkToken();
-    // return () => 
+    const controller = new AbortController();
+    checkToken(controller);
+
+    return () => {
+      controller.abort();
+    };
   }, []);
 
   function login(token) {
@@ -44,7 +44,7 @@ const AuthContextProvider = (props) => {
 
   function logout() {
     setToken(null);
-    setUser({});
+    setUser(null);
     localStorage.removeItem("token");
     console.log("User logged out");
   }

@@ -16,7 +16,6 @@ createRoot(document.getElementById("root")).render(
       hideProgressBar
       draggable
       closeOnClick
-      pauseOnHover
       theme="light"
       transition={Zoom}
     />
