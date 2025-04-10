@@ -229,3 +229,102 @@ p#errRegsPswrd {
   font-size: 0.8rem !important;
   font-weight: 600 !important;
 }
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+
+dialog {
+  position: fixed !important;
+  top: 5vh !important;
+  width: 25rem !important;
+  max-width: 90% !important;
+  margin: 2rem auto !important;
+  z-index: 1000 !important;
+  border: none !important;
+  outline: none !important;
+}
+
+dialog.modal-popup {
+  border-radius: 6px;
+  padding: 1rem;
+  background: var(--gray-800);
+  box-shadow: 0 0 8px 9px rgba(0, 0, 0, 0.2) !important;
+}
+
+header.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.4rem 1rem;
+  border-radius: 24px;
+}
+
+.modal-header.info {
+  background-color: var(--info);
+}
+.modal-header.confirm {
+  background-color: var(--indigo);
+}
+.modal-header.danger {
+  background-color: var(--danger);
+}
+.modal-header.success {
+  background-color: var(--success);
+}
+.modal-header.secondary {
+  background-color: var(--secondary);
+}
+.modal-header.dark {
+  background-color: var(--dark);
+}
+.modal-header.warning {
+  background-color: var(--warning);
+}
+
+.modal-header i {
+  color: var(--gray-500);
+  font-size: 1.2rem;
+}
+
+.modal-header i:hover {
+  color: var(--gray-200);
+}
+
+.modal-body {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0.3rem;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+}
+
+.modal-body i {
+  font-size: 2rem;
+  color: var(--info);
+  margin-right: 0.5rem;
+}
+
+.modal-body p {
+  color: var(--gray-500);
+  margin-bottom: 0;
+}
+
+.modal-footer button.btn-primary {
+  background: #07bc0c !important;
+  border-color: #07bc0c !important;
+}
+
+.modal-footer button.btn-primary:hover {
+  background: #10ce16 !important;
+  border-color: #10ce16 !important;
+}

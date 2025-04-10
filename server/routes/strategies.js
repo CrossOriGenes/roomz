@@ -38,7 +38,7 @@ router.get(
       let id
       const existinguser = await User.findOne({ email: req.user._json.email })
       if (existinguser) {
-        existinguser.profile_pic = req.user._json.picture
+        existinguser.profile_pic = req.user._json.picture? req.user._json.picture : ""
         existinguser.timestamp = Date.now()
         await existinguser.save()
         id = existinguser._id
